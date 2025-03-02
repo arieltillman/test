@@ -18,7 +18,7 @@
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://api.mapbox.com/styles/v1/arieltillman/cm7p4xsd501e801qo6ih5hal4?access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNtN3I1d3h2ZDBiNncybG9teXZvenIyZjAifQ.ZSSWXLbX9KfyFnZP3T5MBg',
+      style: 'mapbox://styles/mapbox/streets-v11',  // Using the default Mapbox style for testing
       center: [0, 0], // Coordinates for the center of the map
       zoom: 2           // Initial zoom level
     });
@@ -36,10 +36,4 @@
           'tileSize': 256
         },
         'paint': {
-          'raster-opacity': 0.1
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+          'raster-opacity': 0.8  // Increased opacity for better visibility of the W
