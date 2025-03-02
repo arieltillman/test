@@ -18,14 +18,9 @@
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://api.mapbox.com/styles/v1/arieltillman/cm7p4xsd501e801qo6ih5hal4.html?title=copy&access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNsdWp5MWRlcTA0YnAya21xbWFqajNuYzgifQ.h7JpEWGJcnWeAqX5R-UPqA&zoomwheel=true&fresh=true#10.55/40.7479/-74.0061',  // Your custom style URL
+      style: 'mapbox://styles/mapbox/streets-v11',  // Default Mapbox style (streets)
       center: [0, 0],  // Coordinates for the center of the map
       zoom: 2           // Initial zoom level
-    });
-
-    // Add error handling for map events
-    map.on('error', function(e) {
-      console.log('Map error:', e);  // Logs any errors to the browser console
     });
 
     map.on('load', function() {
@@ -35,17 +30,18 @@
         'source': {
           'type': 'raster',
           'tiles': [
-            'https://api.mapbox.com/styles/v1/arieltillman.cm7r3mt772qhv1mqsfjvqio45-52nj8/wmts/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNsdWp5MWRlcTA0YnAya21xbWFqajNuYzgifQ.h7JpEWGJcnWeAqX5R-UPqA'  // WMTS Tile URL with your access token
+            'https://api.mapbox.com/styles/v1/arieltillman/cm7p4xsd501e801qo6ih5hal4/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNsdWp5MWRlcTA0YnAya21xbWFqajNuYzgifQ.h7JpEWGJcnWeAqX5R-UPqA'
           ],
-          'tileSize': 256
+          'tileSize': 512  // This is the tile size used by Mapbox
         },
         'paint': {
-          'raster-opacity': 0.8  // Opacity for the layer to make it visible
+          'raster-opacity': 1  // Set full opacity for visibility
         }
       });
     });
   </script>
 </body>
 </html>
+
 
 
