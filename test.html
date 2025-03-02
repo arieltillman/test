@@ -14,16 +14,20 @@
 <body>
   <div id="map"></div>
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNtN3I1d3h2ZDBiNncybG9teXZvenIyZjAifQ.ZSSWXLbX9KfyFnZP3T5MBg';  
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNtN3I1d3h2ZDBiNncybG9teXZvenIyZjAifQ.ZSSWXLbX9KfyFnZP3T5MBg';  // Your Mapbox access token
 
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',  // Using the default Mapbox style for testing
-      center: [0, 0], // Coordinates for the center of the map
+      style: 'mapbox://styles/mapbox/streets-v11',  // Default Mapbox style (streets)
+      center: [0, 0],  // Coordinates for the center of the map
       zoom: 2           // Initial zoom level
     });
 
-    // Add WMTS layer using Mapbox GL JS
+    // Add error handling for map events
+    map.on('error', function(e) {
+      console.log('Map error:', e);  // Logs any errors to the browser console
+    });
+
     map.on('load', function() {
       map.addLayer({
         'id': 'wmts-layer',
@@ -31,9 +35,16 @@
         'source': {
           'type': 'raster',
           'tiles': [
-            'https://api.mapbox.com/styles/v1/arieltillman/cm7r3mt772qhv1mqsfjvqio45-52nj8/wmts/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNtN3I1d3h2ZDBiNncybG9teXZvenIyZjAifQ.ZSSWXLbX9KfyFnZP3T5MBg'
+            'https://api.mapbox.com/styles/v1/mapbox/streets-v11/wmts/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNtN3I1d3h2ZDBiNncybG9teXZvenIyZjAifQ.ZSSWXLbX9KfyFnZP3T5MBg'  // WMTS Tile URL with your access token
           ],
           'tileSize': 256
         },
         'paint': {
-          'raster-opacity': 0.8  // Increased opacity for better visibility of the W
+          'raster-opacity': 0.8  // Opacity for the layer to make it visible
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
