@@ -1,47 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Mapbox Map with WMTS</title>
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
-  <style>
-    body { margin: 0; }
-    #map { width: 100%; height: 500px; }
-  </style>
+    <meta charset="utf-8" />
+    <title>Mapbox Example</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-  <div id="map"></div>
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNsdWp5MWRlcTA0YnAya21xbWFqajNuYzgifQ.h7JpEWGJcnWeAqX5R-UPqA';  // Your Mapbox access token
-
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',  // Default Mapbox style (streets)
-      center: [0, 0],  // Coordinates for the center of the map
-      zoom: 2           // Initial zoom level
-    });
-
-    map.on('load', function() {
-      map.addLayer({
-        'id': 'wmts-layer',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'https://api.mapbox.com/styles/v1/arieltillman/cm7p4xsd501e801qo6ih5hal4/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZWx0aWxsbWFuIiwiYSI6ImNsdWp5MWRlcTA0YnAya21xbWFqajNuYzgifQ.h7JpEWGJcnWeAqX5R-UPqA'
-          ],
-          'tileSize': 512  // This is the tile size used by Mapbox
-        },
-        'paint': {
-          'raster-opacity': 1  // Set full opacity for visibility
-        }
-      });
-    });
-  </script>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'your_mapbox_access_token';
+        var map = new mapboxgl.Map({
+            container: 'map', // ID of the container element
+            style: 'mapbox://styles/arieltillman/cm7r8hydd004301sad9fueckn', // Mapbox style URL
+            center: [0, 0], // Set initial center of map
+            zoom: 2 // Set zoom level
+        });
+    </script>
 </body>
 </html>
-
 
 
